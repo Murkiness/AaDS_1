@@ -154,6 +154,14 @@ class TestLinkedList(unittest.TestCase):
         self.assertTrue(res.head.value == 14)
         self.assertTrue(res.tail.value == 20)
 
+    def test_sum_lists_one_el(self):
+        ll1 = self.build_list([1])
+        ll2 = self.build_list([2])
+        res = sum_lists(ll1, ll2)
+        self.assertTrue(res.head is res.tail)
+        self.assertTrue(res.head is not None)
+        self.assertTrue(res.head.next is None)
+
     def test_sum_lists_not_equal_length(self):
         list2 = self.build_list([9])
         res = sum_lists(list2, self.linked_list)
