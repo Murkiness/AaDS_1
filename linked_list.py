@@ -22,7 +22,6 @@ class LinkedList:
         node = self.head
 
         while node is not None:
-            print(node.value)
             node = node.next
 
     def find(self, val):
