@@ -45,6 +45,33 @@ class TestLinkedList(unittest.TestCase):
         res = ll.get_list_as_array()
         self.assertEqual(res, None)
 
+    def test_delete_does_nothing_for_non_existent_element(self):
+        self.linked_list.delete(111, True)
+        self.assertTrue(self.linked_list.tail is not None)
+        self.assertTrue(self.linked_list.tail.value == 5)
+        self.assertTrue(self.linked_list.head is not None)
+        self.assertTrue(self.linked_list.head.value == 5)
+
+    def test_delete_all_for_mono_list(self):
+        ll = self.build_list([4, 4, 4])
+        ll.delete(4, True)
+        self.assertTrue(ll.head is None)
+        self.assertTrue(ll.tail is None)
+
+    def test_delete_all_similar_elements_2(self):
+        ll = self.build_list([4, 4, 5])
+        ll.delete(4, True)
+        self.assertTrue(ll.head is not None)
+        self.assertTrue(ll.tail is not None)
+        self.assertTrue(ll.tail is ll.head)
+
+    def test_delete_all_similar_elements_3(self):
+        ll = self.build_list([4, 5, 5])
+        ll.delete(5, True)
+        self.assertTrue(ll.head is not None)
+        self.assertTrue(ll.tail is not None)
+        self.assertTrue(ll.tail is ll.head)
+
     def test_clean(self):
         ll = LinkedList()
 

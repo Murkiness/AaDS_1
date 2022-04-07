@@ -53,7 +53,8 @@ class LinkedList:
                 self.delete_node(node, prevNode)
                 if not all:
                     break
-            prevNode = node
+            else:
+                prevNode = node
             node = node.next
 
     def clean(self):
@@ -90,7 +91,10 @@ class LinkedList:
                 node = node.next
 
     def delete_node(self, node, prevNode):
-        if node is self.head:
+        if node is self.head and node is self.tail:
+            self.head = None
+            self.tail = None
+        elif node is self.head:
             self.head = node.next
         elif node is self.tail:
             self.tail = prevNode
