@@ -124,7 +124,7 @@ def sum_lists(list1, list2):
         return None
 
     res_list = LinkedList()
-    res_list.head = Node(l1_node.value + l2_node.value)
+    res_list.add_in_tail(Node(l1_node.value + l2_node.value))
 
     l1n = l1_node.next
     l2n = l2_node.next
@@ -133,15 +133,13 @@ def sum_lists(list1, list2):
 
     while l1n and l2n:
         newNode = Node(l1n.value + l2n.value)
-        current_node.next = newNode
-        current_node = newNode
+        res_list.add_in_tail(newNode)
+
         l1n = l1n.next
         l2n = l2n.next
 
     # if something is not None, then list lengths are not equal
     if l1n or l2n:
         return None
-
-    res_list.tail = current_node
 
     return res_list
