@@ -173,5 +173,6 @@ class TestLinkedList2(unittest.TestCase):
         n = Node(7)
         self.list.add_in_head(n)
         self.assertTrue(self.list.head is n)
+        self.assertTrue(self.n1.prev is n)
         self.assertTrue(self.list.head.prev is None)
         self.assertTrue(self.list.head.next.value == 1)

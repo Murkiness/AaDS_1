@@ -94,6 +94,8 @@ class LinkedList2:
         self.head = newNode
         if newNode.next is None:
             self.tail = newNode
+        else:
+            newNode.next.prev = newNode
 
     def delete_node(self, node, prevNode):
         if node is self.head and node is self.tail:
