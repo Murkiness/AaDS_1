@@ -37,12 +37,12 @@ class TestLinkedList2(unittest.TestCase):
 
         res = self.list.find_all(1)
         self.assertTrue(len(res) == 2)
-        self.assertEqual(res[0] is self.n1)
-        self.assertEqual(res[1] is add_n)
+        self.assertTrue(res[0] is self.n1)
+        self.assertTrue(res[1] is add_n)
 
         res1 = self.list.find_all(2)
         self.assertTrue(len(res1) == 1)
-        self.assertEqual(res1[0] is self.n2)
+        self.assertTrue(res1[0] is self.n2)
 
         res2 = self.list.find_all(500)
         self.assertTrue(res2 == [])
@@ -134,17 +134,33 @@ class TestLinkedList2(unittest.TestCase):
         self.assertTrue(self.list.len() == 3)
 
     def test_insert_w_none_empty_list(self):
-        # carefully read description
-        pass
+        ll = LinkedList2()
+        n = Node(1)
+        ll.insert(None, n)
+        self.assertTrue(ll.head is n)
+        self.assertTrue(ll.tail is n)
 
     def test_insert_w_none_non_empty_list(self):
-        pass
+        n = Node(111)
+        self.list.insert(None, n)
+        self.assertTrue(self.list.tail is n)
+        self.assertTrue(self.list.head is not n)
+        self.assertTrue(self.list.head is self.n1)
 
     def test_insert_as_last(self):
-        pass
+        n = Node(111)
+        self.list.insert(self.n3, n)
+        self.assertTrue(self.list.tail is n)
+        self.assertTrue(self.list.tail.prev is self.n3)
+        self.assertTrue(self.list.tail.prev.next is n)
 
     def test_insert_middle(self):
-        pass
+        n = Node(111)
+        self.list.insert(self.n2, n)
+        self.assertTrue(self.list.tail is self.n3)
+        self.assertTrue(self.list.head is self.n1)
+        self.assertTrue(self.list.tail.prev is n)
+        self.assertTrue(self.n2.next is n)
 
     def test_add_in_head_empty(self):
         list = LinkedList2()
