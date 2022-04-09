@@ -78,14 +78,7 @@ class LinkedList2:
             self.add_in_tail(newNode)
         else:
             node = self.head.next
-            while not isinstance(node, HiddenNode):
-                if node is afterNode:
-                    newNode.next = node.next
-                    newNode.prev = node
-                    node.next = newNode
-                    newNode.next.prev = newNode
-                    break
-                node = node.next
+            self.insert_node(node, afterNode, newNode)
 
     def add_in_head(self, newNode):
         newNode.next = self.head.next
@@ -96,6 +89,16 @@ class LinkedList2:
     def delete_node(self, node, prevNode):
         prevNode.next = node.next
         prevNode.next.prev = prevNode
+
+    def insert_node(self, node, afterNode, newNode):
+        while not isinstance(node, HiddenNode):
+            if node is afterNode:
+                newNode.next = node.next
+                newNode.prev = node
+                node.next = newNode
+                newNode.next.prev = newNode
+                break
+            node = node.next
 
     def value_list_from_head(self):
         res = []
