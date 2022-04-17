@@ -46,7 +46,7 @@ class OrderedList:
         current = self.head
 
         while current is not None:
-            if current.value == val:
+            if self.compare(current.value, val) == 0:
                 return current
 
             current = current.next
@@ -122,7 +122,7 @@ class OrderedList:
 
             prev, current = current, current.next
 
-        prev.next, prev.next.prev = item, item
+        prev.next, current.prev = item, item
         item.prev, item.next = prev, current
 
 
@@ -134,7 +134,7 @@ class OrderedStringList(OrderedList):
         v1s = v1.strip()
         v2s = v2.strip()
 
-        if not self.__ascending:
+        if not self._OrderedList__ascending:
             v1s, v2s = v2s, v1s
 
         if v1s < v2s:
