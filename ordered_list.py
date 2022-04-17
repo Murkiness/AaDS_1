@@ -117,7 +117,7 @@ class OrderedList:
         prev = self.head
 
         while current is not None:
-            if self.compare(item.value, current.value) < 0:
+            if self.compare(item.value, current.value) <= 0:
                 break
 
             prev, current = current, current.next

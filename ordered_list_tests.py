@@ -1,8 +1,35 @@
 import unittest
 from ordered_list import OrderedList
 
+import random
+import string
 
 class TestOrderedList(unittest.TestCase):
+
+    def test_random_strings(self):
+        range_l = list(string.ascii_letters) * 3
+        sample = random.sample(range_l, 100)
+        random.shuffle(sample)
+
+        ol = OrderedList(True)
+
+        for i in sample:
+            ol.add(i)
+
+        all = list(map(lambda x: x.value, ol.get_all()))
+
+        self.assertEqual(sorted(sample, reverse=False), all)
+
+    def test_random(self):
+        ol = OrderedList(False)
+        sample = random.sample(range(1, 1000), 500)
+
+        for i in sample:
+            ol.add(i)
+
+        all = list(map(lambda x: x.value, ol.get_all()))
+
+        self.assertEqual(sorted(sample, reverse=True), all)
 
     def test_add_asc(self):
         ol = OrderedList(True)
