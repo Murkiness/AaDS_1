@@ -42,8 +42,8 @@ class PowerSet:
         return res
 
     def issubset(self, set2):
-        for k in self.storage:
-            if not set2.get(k):
+        for k in set2.storage:
+            if not self.storage.get(k):
                 return False
 
         return True

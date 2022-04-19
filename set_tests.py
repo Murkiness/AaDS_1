@@ -100,6 +100,35 @@ def test_difference():
     check_elements_in_set(s2, ["b", "c", "d"])
 
 
+def test_issubset_not_subset():
+    s1 = PowerSet()
+    s2 = PowerSet()
+    put_elements_in_set(s1, ["a", "b", "c"])
+    put_elements_in_set(s2, ["b", "c", "d"])
+
+    assert s1.issubset(s2) is False
+
+
+def test_issubset_true():
+    s1 = PowerSet()
+    s2 = PowerSet()
+    put_elements_in_set(s1, ["a", "b", "c"])
+    put_elements_in_set(s2, ["b", "c"])
+
+    assert s1.issubset(s2) is True
+    assert s2.issubset(s1) is False
+
+
+def test_issubset_equal_sets():
+    s1 = PowerSet()
+    s2 = PowerSet()
+    put_elements_in_set(s1, ["a", "b", "c"])
+    put_elements_in_set(s2, ["a", "b", "c"])
+
+    assert s1.issubset(s2) is True
+    assert s2.issubset(s1) is True
+
+
 def test_big_set_performance_get():
     s1 = PowerSet()
     elements = range(20000)
